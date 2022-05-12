@@ -19,6 +19,9 @@ const getEthereumContract = () => {
 };
 
 export const TransactionProvider = ({ children }) => {
+  const chekWalet = async () => {
+    if (!ethereum) return alert("place install metamask");
+  };
   return (
     <TransactionContext.Provider value={{ value: "test" }}>
       {children}
