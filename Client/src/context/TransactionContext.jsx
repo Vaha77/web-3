@@ -18,10 +18,17 @@ const getEthereumContract = () => {
   console.log({ provider, signer, transactionContract });
 };
 
-export const TransactionProvider = ({ children }) => {
-  const chekWalet = async () => {
+export const TransactionsProvider = ({ children }) => {
+  const checkIfWalletIsConnect = async () => {
     if (!ethereum) return alert("place install metamask");
+
+    const accounts = await ethereum.request({ method: "eth_account" });
+    console.log(accounts);
   };
+
+  useEffect(() => {
+    checkIfWalletIsConnect();
+  }, []);
   return (
     <TransactionContext.Provider value={{ value: "test" }}>
       {children}
